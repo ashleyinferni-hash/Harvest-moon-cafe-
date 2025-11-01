@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Harvest Moon Cafe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Colors based on the golden/autumn theme */
+        :root {
+            --color-primary: #8B4513; /* Earthy Brown */
+            --color-secondary: #FFD700; /* Gold */
+            --color-accent: #B8860B; /* Darker Gold/Bronze */
+            --color-background: #F5F5DC; /* Cream/Beige */
+        }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-secondary { color: var(--color-secondary); }
+        .border-secondary { border-color: var(--color-secondary); }
+        .bg-secondary { background-color: var(--color-secondary); }
+        .text-primary { color: var(--color-primary); }
+
+        /* Custom Font (to match the aesthetic, a serif font works well) */
+        body { font-family: 'Georgia', serif; background-color: var(--color-background); }
+
+        /* Map Placeholder Style */
+        .map-placeholder {
+            height: 400px;
+            background-color: #A9A9A9; /* Dark Gray */
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d4/Map_of_the_World_colored_by_continent.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .map-placeholder::after {
+            content: "Interactive Map Placeholder: Locations in UK, France, Ireland, USA, & Canada";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Menu Item Styling */
+        .menu-item-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #D3D3D3;
+        }
+        .menu-category {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid var(--color-accent);
+        }
+    </style>
+</head>
+<body class="text-primary antialiased">
+
+    <header class="bg-primary shadow-lg sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-secondary tracking-widest">
+                The Harvest Moon Cafe
+            </h1>
+            <nav class="hidden md:block">
+                <a href="#about" class="text-secondary hover:text-white mx-3 transition duration-300">About</a>
+                <a href="#menu" class="text-secondary hover:text-white mx-3 transition duration-300">Menu</a>
+                <a href="#locations" class="text-secondary hover:text-white mx-3 transition duration-300">Locations</a>
+            </nav>
+            <button class="md:hidden text-secondary focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <section class="text-center py-24 bg-primary text-white border-b-8 border-secondary">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-6xl font-extrabold mb-4 text-secondary leading-tight">
+                Your Cozy Corner, Global Reach
+            </h2>
+            <p class="text-xl mb-8 opacity-90">
+                Experience the warmth of autumn in every cup. Welcome to The Harvest Moon Cafe.
+            </p>
+            <a href="#menu" class="inline-block px-8 py-3 text-lg font-semibold bg-secondary text-primary rounded-full hover:bg-white transition duration-300 shadow-xl">
+                Explore Our Menu
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-bold text-center mb-12 text-accent">About The Harvest Moon Cafe</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 text-accent">Our Story</h3>
+                <p class="mb-4 text-gray-700">
+                    The Harvest Moon Cafe was founded on the idea that every neighborhood deserves a cozy, welcoming space with excellent coffee and nourishing food. We source sustainable, high-quality ingredients to bring the rich, comforting flavors of the harvest season to you, all year round. Whether you need a place to work or a spot to meet friends, our doors are always open.
+                </p>
+                <p class="text-gray-700">
+                    Our unique aesthetic, combining earthy tones with accents of gold and bronze, creates an atmosphere of timeless warmth that feels like coming home.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-2xl font-semibold mb-4 text-accent">Allergen & Dietary Information</h3>
+                <p class="mb-4 text-gray-700">
+                    Your safety and dietary needs are important to us.
+                </p>
+                <ul class="list-disc list-inside text-gray-700 ml-4">
+                    <li>**Allergens:** Please inform your server of any allergies. While we take precautions, we cannot guarantee a cross-contamination free environment.</li>
+                    <li>**Vegan (V) & Vegetarian (VE):** Items are clearly marked on our menu. We offer various plant-based milk alternatives (oat, almond, soy) for all our coffee drinks.</li>
+                    <li>**Special Requests:** We are happy to accommodate modifications where possible. Just ask!</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-20 bg-primary bg-opacity-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12 text-secondary">Our Harvest Menu</h2>
+            <div class="bg-white p-8 rounded-xl shadow-2xl">
+
+                <div class="menu-category">Coffee & Espresso</div>
+                <div class="space-y-1">
+                    <div class="menu-item-row">
+                        <span>Latte (Oat Milk Available) <span class="text-green-600">(VE)</span></span>
+                        <span class="font-semibold text-accent">$4.50</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span>Espresso (Single/Double) <span class="text-green-600">(V, VE)</span></span>
+                        <span class="font-semibold text-accent">$3.00</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span>Seasonal Harvest Spice Latte</span>
+                        <span class="font-semibold text-accent">$5.50</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span>Cold Brew Coffee <span class="text-green-600">(V, VE)</span></span>
+                        <span class="font-semibold text-accent">$4.00</span>
+                    </div>
+                </div>
+
+                <div class="menu-category">Baked Goods & Pastries</div>
+                <div class="space-y-1">
+                    <div class="menu-item-row">
+                        <span>Harvest Moon Scone (Served w/ jam)</span>
+                        <span class="font-semibold text-accent">$3.50</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span>Vegan Blueberry Muffin <span class="text-green-600">(V)</span></span>
+                        <span class="font-semibold text-accent">$4.00</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span>Classic Butter Croissant</span>
+                        <span class="font-semibold text-accent">$3.00</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span>Apple & Cinnamon Danish <span class="text-green-600">(VE)</span></span>
+                        <span class="font-semibold text-accent">$4.25</span>
+                    </div>
+                </div>
+
+                <div class="menu-category">Light Fare & Sandwiches</div>
+                <div class="space-y-1">
+                    <div class="menu-item-row">
+                        <span>Roasted Veggie & Hummus Wrap <span class="text-green-600">(V)</span></span>
+                        <span class="font-semibold text-accent">$9.50</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span>Turkey & Fig Panini</span>
+                        <span class="font-semibold text-accent">$11.00</span>
+                    </div>
+                    <div class="menu-item-row">
+                        <span>Caprese Ciabatta (Mozzarella, Tomato, Basil) <span class="text-green-600">(VE)</span></span>
+                        <span class="font-semibold text-accent">$10.00</span>
+                    </div>
+                </div>
+
+            </div>
+            <p class="text-center mt-6 text-sm text-primary opacity-80">
+                (V) = Vegan | (VE) = Vegetarian
+            </p>
+        </div>
+    </section>
+
+    <section id="locations" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-bold text-center mb-12 text-accent">Find Your Nearest Cafe</h2>
+        <div class="map-placeholder mb-12"></div>
+
+        <h3 class="text-2xl font-semibold mb-6 text-center text-accent">Major International Locations</h3>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+            <div class="bg-white p-4 rounded-lg shadow-md border-b-2 border-secondary">Paris, France</div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-b-2 border-secondary">London, UK</div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-b-2 border-secondary">Dublin, Ireland</div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-b-2 border-secondary">New York, USA</div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-b-2 border-secondary">Toronto, Canada</div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-b-2 border-secondary">Bordeaux, France</div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-b-2 border-secondary">Manchester, UK</div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-b-2 border-secondary">Galway, Ireland</div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-b-2 border-secondary">Los Angeles, USA</div>
+            <div class="bg-white p-4 rounded-lg shadow-md border-b-2 border-secondary">Vancouver, Canada</div>
+        </div>
+    </section>
+
+    <footer class="bg-primary text-secondary py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 The Harvest Moon Cafe. All rights reserved.</p>
+            <p class="mt-2 text-sm">Follow us on social media for seasonal updates!</p>
+        </div>
+    </footer>
+</body>
+</html>
