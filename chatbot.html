@@ -1,0 +1,66 @@
+class CafeAssistant:
+    """
+    A simple AI-like assistant to match cafe items based on tags.
+    """
+    def __init__(self):
+        # A dictionary representing the cafe's menu with associated tags
+        self.menu = {
+            "Espresso": ["drink", "hot", "caffeine"],
+            "Decaf Latte": ["drink", "hot", "milk"],
+            "Blueberry Muffin": ["food", "sweet", "pastry"],
+            "Vegan Sandwich": ["food", "savory", "vegan", "lunch"],
+            "Iced Tea": ["drink", "cold", "refreshing"],
+            "Gluten-Free Brownie": ["food", "sweet", "gluten-free"]
+        }
+
+    def recommend_item(self, preference_tag: str) -> list:
+        """
+        Finds menu items that match the provided tag.
+
+        Args:
+            preference_tag: A string (e.g., 'vegan', 'hot', 'sweet').
+
+        Returns:
+            A list of menu item names that match the tag.
+        """
+        matches = []
+        # Convert tag to lowercase for case-insensitive matching
+        target_tag = preference_tag.lower()
+        
+        for item, tags in self.menu.items():
+            # Check if the target tag is in the item's list of tags
+            if target_tag in tags:
+                matches.append(item)
+        
+        return matches
+
+# --- Example Usage ---
+
+# 1. Initialize the assistant
+assistant = CafeAssistant()
+
+# 2. Get recommendations based on customer input
+customer_request = "I'd like something vegan."
+tag_to_search = "vegan"
+
+recommendations = assistant.recommend_item(tag_to_search)
+
+print(f"Customer says: '{customer_request}'")
+print(f"Searching for items tagged: '{tag_to_search}'")
+
+if recommendations:
+    print("\n✨ Recommendations:")
+    for item in recommendations:
+        print(f"- {item}")
+else:
+    print(f"\n😔 Sorry, no items found for '{tag_to_search}'.")
+
+# Example 2: Searching for a different tag
+tag_to_search_2 = "hot"
+recommendations_2 = assistant.recommend_item(tag_to_search_2)
+
+print("\n---")
+print(f"Searching for items tagged: '{tag_to_search_2}'")
+print("\n✨ Recommendations:")
+for item in recommendations_2:
+    print(f"- {item}")
